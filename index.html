@@ -3,214 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Igor M. Vieira — Patent Portfolio</title>
-<meta name="description" content="Quatro patentes US, atribuídas à Kyndryl, reconstruídas como demonstrações interativas.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Igor Monteiro Vieira</title>
+<meta name="description" content="Interactive experiments by Igor Monteiro Vieira.">
+<meta name="keywords" content="experiments, container security, reinforcement learning, SCADA">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#080b12;
-  --surface:#0d121c;
-  --surface2:#111826;
-  --border:#1b2436;
-  --border2:#273248;
-  --text:#e6ebf4;
-  --dim:#7688a3;
-  --faint:#485468;
-  --cyan:#22d3ee;
-  --indigo:#818cf8;
-  --green:#34d399;
-  --amber:#fbbf24;
+  --paper:#EDE6D2;
+  --paper2:#E3DAC0;
+  --paper3:#F6F1E1;
+  --ink:#2B2519;
+  --ink2:#5C5238;
+  --rule:#B3A67F;
+  --link:#0000CC;
+  --visited:#551A8B;
+  --hot:#990000;
+  --olive:#4A5D23;
 }
-html{scroll-behavior:smooth}
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'DM Sans',system-ui,sans-serif;
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;
-  overflow-x:hidden;
+  background-color:var(--paper);
+  color:var(--ink);
+  font-family:"Times New Roman",Times,serif;
+  font-size:16px;
+  margin:0;
+  padding:12px 8px 30px 8px;
 }
-.mono{font-family:'JetBrains Mono',monospace}
+td,th{font-family:"Times New Roman",Times,serif}
+a{color:var(--link)}
+a:visited{color:var(--visited)}
+a:hover{color:var(--hot)}
+tt,code,.mono{font-family:"Courier New",Courier,monospace}
 
-/* ambient grid backdrop */
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(var(--border) 1px,transparent 1px),
-    linear-gradient(90deg,var(--border) 1px,transparent 1px);
-  background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 70%);
-  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 70%);
-  opacity:.5;
-}
-.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 24px}
+.page{width:760px;margin:0 auto}
 
-/* top bar */
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 0;border-bottom:1px solid var(--border);
+/* ---- BANNER ---- */
+.banner{
+  border:3px outset var(--paper2);
+  background-color:var(--paper3);
+  padding:14px 10px 10px 10px;
+  text-align:center;
 }
-.topbar .id{
-  font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;
-  letter-spacing:.2px;display:flex;align-items:center;gap:10px;
+.banner h1{
+  font-size:34px;
+  margin:0 0 4px 0;
+  letter-spacing:1px;
+  color:var(--ink);
+  text-shadow:2px 2px 0 var(--paper2);
 }
-.topbar .id .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
-.topbar .status{font-size:11.5px;color:var(--dim);letter-spacing:.4px}
-.topbar .status b{color:var(--text);font-weight:500}
-
-/* hero */
-.hero{padding:80px 0 56px}
-.eyebrow{
-  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
-  letter-spacing:2.5px;text-transform:uppercase;color:var(--cyan);
-  display:flex;align-items:center;gap:12px;margin-bottom:24px;
-}
-.eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent);max-width:200px}
-.hero h1{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;
-  font-size:clamp(34px,6vw,58px);line-height:1.04;letter-spacing:-1.5px;
-  max-width:16ch;margin-bottom:22px;
-}
-.hero h1 em{font-style:normal;color:var(--indigo)}
-.hero p{font-size:16.5px;color:var(--dim);max-width:52ch}
-.hero p a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border2)}
-.hero p a:hover{border-color:var(--cyan)}
-
-/* section label */
-.reg-label{
-  display:flex;align-items:baseline;justify-content:space-between;
-  padding:0 0 14px;margin-top:24px;
-  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--border);
+.banner .sub{
+  font-family:"Courier New",Courier,monospace;
+  font-size:12px;
+  color:var(--ink2);
+  letter-spacing:1px;
 }
 
-/* registry rows */
-.registry{margin-bottom:72px}
-.rec{
-  display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:center;
-  padding:26px 20px;margin:0 -20px;
-  border-bottom:1px solid var(--border);
-  text-decoration:none;color:inherit;
-  position:relative;transition:background .18s ease;
-}
-.rec::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
-  background:var(--cyan);transform:scaleY(0);transform-origin:top;transition:transform .22s ease;
-}
-.rec:hover{background:var(--surface)}
-.rec:hover::before{transform:scaleY(1)}
-.rec:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;background:var(--surface)}
-.rec-main{min-width:0}
-.rec-num{
-  font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;
-  color:var(--text);letter-spacing:.3px;margin-bottom:7px;
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-}
-.chip{
-  font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;
-  letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:3px;
-  border:1px solid var(--border2);color:var(--dim);
-}
-.chip.granted{color:var(--green);border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.06)}
-.chip.published{color:var(--amber);border-color:rgba(251,191,36,.32);background:rgba(251,191,36,.06)}
-.rec-title{
-  font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;
-  letter-spacing:-.2px;margin-bottom:5px;
-}
-.rec-desc{font-size:13.5px;color:var(--dim);max-width:56ch}
-.rec-go{
-  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
-  color:var(--dim);white-space:nowrap;display:flex;align-items:center;gap:8px;
-  transition:color .18s ease,gap .18s ease;
-}
-.rec:hover .rec-go{color:var(--cyan);gap:12px}
-.rec-go .arrow{font-size:15px;line-height:1}
 
-/* footer */
-.foot{
-  border-top:1px solid var(--border);padding:32px 0 60px;
-  display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;
-  font-size:12.5px;color:var(--faint);
+/* ---- NAV BAR ---- */
+.navbar{
+  border:2px outset var(--paper2);
+  background-color:var(--paper2);
+  padding:5px;
+  text-align:center;
+  font-family:"Courier New",Courier,monospace;
+  font-size:12px;
+  margin-bottom:10px;
 }
-.foot .creds{display:flex;flex-wrap:wrap;gap:8px 16px;font-family:'JetBrains Mono',monospace;letter-spacing:.3px}
-.foot a{color:var(--dim);text-decoration:none}
-.foot a:hover{color:var(--cyan)}
+.navbar a{margin:0 4px;text-decoration:none;font-weight:bold}
+.navbar a:hover{text-decoration:underline}
 
-@media(max-width:600px){
-  .rec{grid-template-columns:1fr;gap:14px}
-  .rec-go{justify-content:flex-start}
-  .topbar .status{display:none}
-  .hero{padding:56px 0 40px}
+/* ---- SECTION HEADS ---- */
+h2.sec{
+  background-color:var(--paper2);
+  border-top:2px solid var(--rule);
+  border-bottom:2px solid var(--rule);
+  font-size:17px;
+  margin:18px 0 10px 0;
+  padding:4px 8px;
+  letter-spacing:.5px;
 }
-@media(prefers-reduced-motion:reduce){
-  *{transition:none!important;scroll-behavior:auto!important}
+
+/* ---- PATENT TABLE ---- */
+table.reg{
+  width:100%;
+  border:3px outset var(--paper2);
+  border-collapse:separate;
+  border-spacing:0;
+  background-color:var(--paper3);
+}
+table.reg th{
+  background-color:var(--paper2);
+  border-bottom:2px solid var(--rule);
+  font-family:"Courier New",Courier,monospace;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  text-align:left;
+  padding:5px 8px;
+}
+table.reg td{
+  border-bottom:1px dotted var(--rule);
+  padding:10px 8px;
+  vertical-align:top;
+  font-size:15px;
+}
+table.reg tr:last-child td{border-bottom:none}
+table.reg tr.alt td{background-color:#E9E1CB}
+.pnum{font-family:"Courier New",Courier,monospace;font-size:13px;font-weight:bold;white-space:nowrap}
+.pstat{font-family:"Courier New",Courier,monospace;font-size:11px;color:var(--ink2);letter-spacing:.5px}
+.ptitle{font-weight:bold}
+.pdesc{font-size:14px;color:var(--ink2);margin-top:3px}
+
+/* ---- INFO BOX ---- */
+.box{
+  border:2px inset var(--paper2);
+  background-color:var(--paper3);
+  padding:10px 12px;
+  font-size:15px;
+}
+.box p{margin:0 0 8px 0}
+.box p:last-child{margin-bottom:0}
+
+/* ---- FOOTER ---- */
+.footer{
+  margin-top:18px;
+  border-top:2px solid var(--rule);
+  padding-top:10px;
+  text-align:center;
+  font-family:"Courier New",Courier,monospace;
+  font-size:11px;
+  color:var(--ink2);
+  line-height:1.7;
+}
+
+hr.old{border:none;border-top:2px groove var(--rule);margin:14px 0}
+
+@media(max-width:800px){
+  .page{width:auto}
+  table.reg td{font-size:14px}
+  .banner h1{font-size:22px}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="page">
 
-  <header class="topbar">
-    <div class="id"><span class="dot"></span>Igor M. Vieira</div>
-    <div class="status"><b>3</b> concedidas · <b>1</b> publicada · assignee <b>Kyndryl</b></div>
-  </header>
+  <!-- BANNER -->
+  <div class="banner">
+    <h1>Igor Monteiro Vieira</h1>
+    <div class="sub">Experiments</div>
+  </div>
 
-  <section class="hero">
-    <div class="eyebrow">Patent Portfolio</div>
-    <h1>Quatro invenções, reconstruídas como <em>demos interativas</em>.</h1>
-    <p>Cada patente abaixo abre uma simulação navegável do mecanismo que ela protege — do scoring de containers ao controle SCADA de vazão. Feito por <a href="https://github.com/imv7" target="_blank" rel="noopener">Igor Vieira</a>, CISA, auditor de TI na Kyndryl.</p>
-  </section>
 
-  <div class="reg-label"><span>Registro de patentes</span><span>US · 4 registros</span></div>
+  <!-- NAV -->
+  <div class="navbar">
+    [ <a href="index.html">HOME</a> ]
+    [ <a href="#patents">EXPERIMENTS</a> ]
+    [ <a href="#about">ABOUT</a> ]
+    [ <a href="irc.html">CHAT</a> ]
+    [ <a href="https://github.com/imv7" target="_blank" rel="noopener">GITHUB</a> ]
+  </div>
 
-  <main class="registry">
+  <div class="box">
+    <p>Four experiments, each one a simulation that runs in the browser. The title opens the demo; the number opens the patent it came from.</p>
+    <p>There is also an <a href="irc.html">IRC room</a>, if anyone is around.</p>
+  </div>
 
-    <a class="rec" href="container-security-engine.html">
-      <div class="rec-main">
-        <div class="rec-num">US 12,112,155 B2 <span class="chip granted">Concedida</span></div>
-        <div class="rec-title">ML Scoring Engine — Container Hosting Security</div>
-        <div class="rec-desc">Hospedagem autônoma de containers que pontua e libera imagens conforme o risco de segurança, com análise em tempo de execução.</div>
-      </div>
-      <div class="rec-go">abrir demo <span class="arrow">→</span></div>
-    </a>
+  <!-- PATENTS -->
+  <h2 class="sec" id="patents">Experiments</h2>
 
-    <a class="rec" href="dmse_simulation.html">
-      <div class="rec-main">
-        <div class="rec-num">US 11,290,772 B2 <span class="chip granted">Concedida</span></div>
-        <div class="rec-title">DMSE — Multi-Source Content Display</div>
-        <div class="rec-desc">Exibição simultânea de múltiplas fontes de conteúdo em uma única superfície, com coordenação de frequência por usuário.</div>
-      </div>
-      <div class="rec-go">abrir demo <span class="arrow">→</span></div>
-    </a>
+  <table class="reg">
+    <tr>
+      <th width="160">Number &rarr; record</th>
+      <th>Experiment &rarr; demo</th>
+      <th width="90">Status</th>
+    </tr>
 
-    <a class="rec" href="pourcontrol-detection.html">
-      <div class="rec-main">
-        <div class="rec-num">US 11,117,794 B2 <span class="chip granted">Concedida</span></div>
-        <div class="rec-title">PourControl SCADA — Detection Mechanics</div>
-        <div class="rec-desc">Controle em malha fechada para vazão autônoma de líquidos, com a mecânica de detecção do processo industrial.</div>
-      </div>
-      <div class="rec-go">abrir demo <span class="arrow">→</span></div>
-    </a>
+    <tr>
+      <td class="pnum"><a href="https://patents.google.com/patent/US12112155B2/en" target="_blank" rel="noopener">US 12,112,155 B2</a></td>
+      <td>
+        <div class="ptitle"><a href="container-security-engine.html">ML Scoring Engine &mdash; Container Hosting Security</a></div>
+        <div class="pdesc">Autonomous container hosting that scores and admits images according to security risk, with run-time analysis.</div>
+      </td>
+      <td class="pstat">Granted</td>
+    </tr>
 
-    <a class="rec" href="noc-visual.html">
-      <div class="rec-main">
-        <div class="rec-num">US 2022/0188213 A1 <span class="chip published">Publicada</span></div>
-        <div class="rec-title">NOC — RL Script Selector</div>
-        <div class="rec-desc">Aprendizado por reforço que seleciona scripts de remediação a partir de uma base de conhecimento, gerando playbooks de automação.</div>
-      </div>
-      <div class="rec-go">abrir demo <span class="arrow">→</span></div>
-    </a>
+    <tr class="alt">
+      <td class="pnum"><a href="https://patents.google.com/patent/US11290772B2/en" target="_blank" rel="noopener">US 11,290,772 B2</a></td>
+      <td>
+        <div class="ptitle"><a href="dmse_simulation.html">DMSE &mdash; Multi-Source Content Display</a></div>
+        <div class="pdesc">Simultaneous display of multiple content sources on a single surface, with per-user frequency coordination.</div>
+      </td>
+      <td class="pstat">Granted</td>
+    </tr>
 
-  </main>
+    <tr>
+      <td class="pnum"><a href="https://patents.google.com/patent/US11117794B2/en" target="_blank" rel="noopener">US 11,117,794 B2</a></td>
+      <td>
+        <div class="ptitle"><a href="pourcontrol-detection.html">PourControl SCADA &mdash; Detection Mechanics</a></div>
+        <div class="pdesc">Closed-loop control for autonomous liquid pouring, showing the detection mechanics of the industrial process.</div>
+      </td>
+      <td class="pstat">Granted</td>
+    </tr>
 
-  <footer class="foot">
-    <div class="creds"><span>CISA</span><span>TOGAF</span><span>Brazil</span></div>
-    <div><a href="https://github.com/imv7" target="_blank" rel="noopener">github.com/imv7</a></div>
-  </footer>
+    <tr class="alt">
+      <td class="pnum"><a href="https://patents.google.com/patent/US20220188213A1/en" target="_blank" rel="noopener">US 2022/0188213 A1</a></td>
+      <td>
+        <div class="ptitle"><a href="noc-visual.html">NOC &mdash; RL Script Selector</a></div>
+        <div class="pdesc">Reinforcement learning that selects remediation scripts from a knowledgebase, generating automation playbooks.</div>
+      </td>
+      <td class="pstat">Published</td>
+    </tr>
+
+  </table>
+
+  <!-- ABOUT -->
+  <h2 class="sec" id="about">About</h2>
+
+  <div class="box">
+    <p>IT auditor in Kyndryl's General Audit Organization, based in Bras&iacute;lia. CISA, with nearly twenty years across IBM and Hewlett Packard Enterprise before that.</p>
+    <p>Find me at <a href="https://github.com/imv7" target="_blank" rel="noopener">github.com/imv7</a>.</p>
+  </div>
+
+  <hr class="old">
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Last updated: 18 July 2026<br>
+    Best viewed in Netscape Navigator 4.0 at 800x600<br>
+    &copy; Igor Monteiro Vieira
+  </div>
 
 </div>
 </body>

@@ -895,5 +895,35 @@ function showProviderDetail(p) {
 // ========== GO ==========
 window.addEventListener('load', init);
 </script>
+
+<!-- ===== RETRO NAV (added) ===== -->
+<style>
+#retro-nav{
+  position:fixed;left:12px;bottom:12px;z-index:2147483647;
+  background:#EDE6D2;border:3px outset #E3DAC0;padding:5px 7px;
+  font-family:"Courier New",Courier,monospace;font-size:11px;
+  box-shadow:3px 3px 0 rgba(0,0,0,.45);line-height:1.5;
+}
+#retro-nav .rn-t{color:#5C5238;font-weight:bold;letter-spacing:.5px;display:block;margin-bottom:3px}
+#retro-nav a{color:#0000CC;text-decoration:none;font-weight:bold;display:block}
+#retro-nav a:visited{color:#551A8B}
+#retro-nav a:hover{color:#990000;text-decoration:underline}
+#retro-nav a:focus-visible{outline:2px solid #990000;outline-offset:1px}
+#retro-nav .rn-x{
+  position:absolute;top:-9px;right:-9px;width:18px;height:18px;
+  background:#E3DAC0;border:2px outset #EDE6D2;color:#2B2519;
+  font-family:"Courier New",Courier,monospace;font-size:11px;font-weight:bold;
+  cursor:pointer;padding:0;line-height:1;
+}
+#retro-nav .rn-x:active{border-style:inset}
+@media(max-width:600px){#retro-nav{font-size:10px;left:6px;bottom:6px}}
+</style>
+<div id="retro-nav">
+  <button class="rn-x" onclick="document.getElementById('retro-nav').style.display='none'" title="Close" aria-label="Close">x</button>
+  <span class="rn-t">US 12,112,155 B2</span>
+  <a href="index.html">&#9668;&#9668; Back to index</a>
+  <a href="https://patents.google.com/patent/US12112155B2/en" target="_blank" rel="noopener">&#9642; Google Patents</a>
+</div>
+<!-- ===== /RETRO NAV ===== -->
 </body>
 </html>
