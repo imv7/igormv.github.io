@@ -778,6 +778,38 @@ init();
 }
 #retro-nav .rn-x:active{border-style:inset}
 @media(max-width:600px){#retro-nav{font-size:10px;left:6px;bottom:6px}}
+
+/* ===== MOBILE ===== */
+@media(max-width:820px){
+  html{font-size:13px}
+  body{-webkit-text-size-adjust:100%}
+
+  .top{height:auto;flex-wrap:wrap;gap:8px;padding:8px 14px}
+  .top .tag{font-size:.6rem;width:100%;order:3}
+  .top .rt{margin-left:auto;gap:8px}
+  .b{padding:8px 14px}
+
+  .scbar{padding:10px 14px;gap:8px}
+  .sc{padding:9px 12px;font-size:.72rem}
+
+  /* single column: main content then the side rail below it */
+  .layout{display:block;min-height:0}
+  .main,.side{max-height:none;overflow:visible;padding:14px}
+  .side{border-left:none;border-top:1px solid var(--bd)}
+
+  .bays{grid-template-columns:1fr;gap:10px}
+  .bb{grid-template-columns:80px 1fr;gap:12px}
+  .vessel{width:80px;height:125px}
+  .v-noz{left:28px}
+  .metrics-row{gap:8px}
+  .log-l .lt{min-width:42px}
+  .mdl{padding:18px 16px;width:94%}
+}
+@media(max-width:420px){
+  .bb{grid-template-columns:1fr;justify-items:center}
+  .vessel{margin:0 auto}
+  .metrics-row{grid-template-columns:1fr;gap:6px}
+}
 </style>
 <div id="retro-nav">
   <button class="rn-x" onclick="document.getElementById('retro-nav').style.display='none'" title="Close" aria-label="Close">x</button>

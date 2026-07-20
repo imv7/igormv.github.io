@@ -118,6 +118,7 @@ table.reg tr.alt td{background-color:#E9E1CB}
 .pstat{font-family:"Courier New",Courier,monospace;font-size:11px;color:var(--ink2);letter-spacing:.5px}
 .ptitle{font-weight:bold}
 .pdesc{font-size:14px;color:var(--ink2);margin-top:3px}
+.psix{font-family:"Courier New",Courier,monospace;font-size:12px;color:var(--olive);letter-spacing:.3px;margin-top:4px}
 
 /* ---- INFO BOX ---- */
 .box{
@@ -147,6 +148,14 @@ hr.old{border:none;border-top:2px groove var(--rule);margin:14px 0}
   .page{width:auto}
   table.reg td{font-size:14px}
   .banner h1{font-size:22px}
+}
+@media(max-width:480px){
+  body{padding:8px 6px 24px 6px}
+  .navbar{font-size:11px;line-height:2}
+  table.reg th,table.reg td{padding:8px 6px}
+  .pnum{font-size:12px}
+  .psix{font-size:11px}
+  .pdesc{font-size:13px}
 }
 </style>
 </head>
@@ -189,6 +198,7 @@ hr.old{border:none;border-top:2px groove var(--rule);margin:14px 0}
       <td class="pnum"><a href="https://patents.google.com/patent/US12112155B2/en" target="_blank" rel="noopener">US 12,112,155 B2</a></td>
       <td>
         <div class="ptitle"><a href="container-security-engine.html">ML Scoring Engine &mdash; Container Hosting Security</a></div>
+        <div class="psix">Scores container images, picks safest cloud.</div>
         <div class="pdesc">Autonomous container hosting that scores and admits images according to security risk, with run-time analysis.</div>
       </td>
       <td class="pstat">Granted</td>
@@ -198,6 +208,7 @@ hr.old{border:none;border-top:2px groove var(--rule);margin:14px 0}
       <td class="pnum"><a href="https://patents.google.com/patent/US11290772B2/en" target="_blank" rel="noopener">US 11,290,772 B2</a></td>
       <td>
         <div class="ptitle"><a href="dmse_simulation.html">DMSE &mdash; Multi-Source Content Display</a></div>
+        <div class="psix">One display, many viewers, different content.</div>
         <div class="pdesc">Simultaneous display of multiple content sources on a single surface, with per-user frequency coordination.</div>
       </td>
       <td class="pstat">Granted</td>
@@ -207,6 +218,7 @@ hr.old{border:none;border-top:2px groove var(--rule);margin:14px 0}
       <td class="pnum"><a href="https://patents.google.com/patent/US11117794B2/en" target="_blank" rel="noopener">US 11,117,794 B2</a></td>
       <td>
         <div class="ptitle"><a href="pourcontrol-detection.html">PourControl SCADA &mdash; Detection Mechanics</a></div>
+        <div class="psix">Sensors catch faults while machines pour.</div>
         <div class="pdesc">Closed-loop control for autonomous liquid pouring, showing the detection mechanics of the industrial process.</div>
       </td>
       <td class="pstat">Granted</td>
@@ -216,6 +228,7 @@ hr.old{border:none;border-top:2px groove var(--rule);margin:14px 0}
       <td class="pnum"><a href="https://patents.google.com/patent/US20220188213A1/en" target="_blank" rel="noopener">US 2022/0188213 A1</a></td>
       <td>
         <div class="ptitle"><a href="noc-visual.html">NOC &mdash; RL Script Selector</a></div>
+        <div class="psix">Reinforcement learning picks best remediation script.</div>
         <div class="pdesc">Reinforcement learning that selects remediation scripts from a knowledgebase, generating automation playbooks.</div>
       </td>
       <td class="pstat">Published</td>
